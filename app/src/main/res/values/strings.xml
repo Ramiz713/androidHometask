@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Hometask1</string>
+    <string name="app_name">Your Profile</string>
+    <string name="settings">Settings</string>
 </resources>
