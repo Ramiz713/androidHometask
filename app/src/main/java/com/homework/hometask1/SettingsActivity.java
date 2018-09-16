@@ -10,12 +10,13 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private TextInputEditText editName;
-    private TextInputEditText editEmail;
-    private TextInputEditText editPhone;
+    private EditText editName;
+    private EditText editEmail;
+    private EditText editPhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

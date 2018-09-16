@@ -7,32 +7,32 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/googlesansmedium"
         android:hint="Your name"
         android:textColor="@color/colorAccent"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintBottom_toTopOf="@+id/tv_email"
         app:layout_constraintLeft_toLeftOf="@+id/line_left"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread" />
 
     <TextView
-        android:id="@+id/email"
+        android:id="@+id/tv_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/googlesansmedium"
         android:hint="Your email"
         android:textColor="@color/colorAccent"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/phone"
+        app:layout_constraintBottom_toTopOf="@+id/tv_phone"
         app:layout_constraintLeft_toLeftOf="@+id/line_left"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
     <TextView
-        android:id="@+id/phone"
+        android:id="@+id/tv_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/googlesansmedium"
@@ -41,7 +41,7 @@
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/line_center"
         app:layout_constraintLeft_toLeftOf="@+id/line_left"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_email" />
 
     <Button
         android:id="@+id/btn_settings"

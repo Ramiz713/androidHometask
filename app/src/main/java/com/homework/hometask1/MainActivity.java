@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final int REQUEST_CODE_INFO = 111;
+    public static final int REQUEST_CODE_SHARE = 222;
+
     private TextView textName;
     private TextView textEmail;
     private TextView textPhone;
@@ -19,12 +22,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        textName = findViewById(R.id.tv_name);
+        textEmail = findViewById(R.id.tv_email);
+        textPhone = findViewById(R.id.tv_phone);
         Button btnSettings = findViewById(R.id.btn_settings);
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivityForResult(intent, 1);
+                startActivityForResult(intent, REQUEST_CODE_INFO);
             }
         });
 
@@ -32,17 +38,16 @@ public class MainActivity extends AppCompatActivity {
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (textName == null) {
+                String name = textName.getText().toString();
+                if (name.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Введите свое имя", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String name = textName.getText().toString();
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, name);
                 sendIntent.setType("text/plain");
-                startActivityForResult(sendIntent, 2);
+                startActivityForResult(sendIntent, REQUEST_CODE_SHARE);
             }
         });
     }
@@ -50,11 +55,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (requestCode == 1) {
+        if (requestCode == REQUEST_CODE_INFO) {
             if (resultCode == Activity.RESULT_OK) {
-                textName = findViewById(R.id.name);
-                textEmail = findViewById(R.id.email);
-                textPhone = findViewById(R.id.phone);
                 if (data != null) {
                     Toast.makeText(this, "Confirmed", Toast.LENGTH_SHORT).show();
                     textName.setText(data.getStringExtra("name"));
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show();
             }
         }
-        if (requestCode == 2)
+        if (requestCode == REQUEST_CODE_SHARE)
             if (resultCode == Activity.RESULT_OK) {
                 Toast.makeText(this, "Shared", Toast.LENGTH_SHORT).show();
             }
